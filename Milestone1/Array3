@@ -1,0 +1,12 @@
+//  Rotate Array
+
+class Solution {
+public:
+	void rotate(vector<int>& v, int d) {
+        int n = v.size();
+        d = d % n;
+        reverse(v.begin()+(n-d),v.end());
+        reverse(v.begin(),v.begin()+(n-d));
+        reverse(v.begin(),v.end());
+    }
+};
