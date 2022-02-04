@@ -1,0 +1,29 @@
+// String to Integer (atoi)
+
+class Solution {
+public:
+    int myAtoi(string s) {
+        int start{0},sign{1};
+        long long res{0};
+        while(start<s.size() and s[start]==32) start++; //Step 1
+        if(start<s.size() and (s[start]=='-')) sign=-1,start++;//step 2
+        else if(start<s.size() and (s[start]=='+')) start++;//step 2
+ 
+        //step 3
+        while(start<s.size() and (s[start]>='0' and s[start]<='9'))
+        {
+            res=(res*10)+(s[start++]-'0'); 
+            if(res>INT_MAX or (-res)<INT_MIN) break;
+        }
+        
+        res*=sign;//step 4
+        
+        //step 5
+        if(res>INT_MAX or res<INT_MIN)
+        {
+            res=(res<0)?(INT_MIN):(INT_MAX);
+        }
+        return static_cast<int>(res);
+        
+    }
+};
