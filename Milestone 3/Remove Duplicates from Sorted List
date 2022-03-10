@@ -1,0 +1,22 @@
+void removeDuplicates(Node *head)
+{
+    struct Node *ptr2, *dup;
+    while(head != NULL)
+    {
+        Node* ptr = head;
+        while(ptr->next != NULL)
+        {
+            if(head->data == ptr->next->data)
+            {
+                Node *temp = ptr->next;
+                ptr->next = temp->next;
+                delete temp;
+            }
+            else
+            {
+                ptr = ptr->next;
+            }
+        }
+        head = head->next;
+    }
+}
